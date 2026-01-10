@@ -34,13 +34,13 @@ jobs:
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
-#
-#      - name: Get AWS Account ID
-#        run: |
-#               ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-#               echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV
-#          #          aws sts get-caller-identity
-#               echo "$AWS_ACCOUNT_ID"
+
+      - name: Get AWS Account ID
+        run: |
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+          echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV
+#              aws sts get-caller-identity
+          echo "$AWS_ACCOUNT_ID"
 #
 #      - name: Login to Codeartifact
 #        run: |
