@@ -43,7 +43,7 @@ jobs:
       - name: Login to Codeartifact
         run: |
           aws codeartifact login \
-              --tool mvn \
+              --tool maven \
               --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
               --domain-owner ${{ env.AWS_ACCOUNT_ID }} \
               --repository ${{ secrets.CODEARTIFACT_REPOSITORY }}
