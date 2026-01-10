@@ -26,12 +26,13 @@ jobs:
 
       - name: Login to Codeartifact
         run: |
-          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) && echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV && echo "ACCOUNT_ID" && \
-          CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token \
-          --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
-          --domain-owner ${{ env.AWS_ACCOUNT_ID }} \
-          --query authorizationToken \
-          --output text)
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) && echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV && echo $AWS_ACCOUNT_ID
+
+#          \ CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token \
+#          --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
+#          --domain-owner ${{ env.AWS_ACCOUNT_ID }} \
+#          --query authorizationToken \
+#          --output text)
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
