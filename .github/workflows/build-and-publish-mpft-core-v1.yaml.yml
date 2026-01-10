@@ -27,7 +27,8 @@ jobs:
       - name: Login to Codeartifact
         shell: bash
         run: |
-          AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text); CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain ${{ secrets.CODEARTIFACT_DOMAIN }} --domain-owner ${AWS_ACCOUNT_ID} --query authorizationToken --output text)
+          AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) 
+          CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain ${{ secrets.CODEARTIFACT_DOMAIN }} --domain-owner ${AWS_ACCOUNT_ID} --query authorizationToken --output text)
 #          echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV && echo $AWS_ACCOUNT_ID
 #          CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain ${{ secrets.CODEARTIFACT_DOMAIN }} --domain-owner ${AWS_ACCOUNT_ID} --query authorizationToken --output text)
 
