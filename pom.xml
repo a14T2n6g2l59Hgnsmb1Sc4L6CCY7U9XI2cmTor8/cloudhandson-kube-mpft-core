@@ -32,9 +32,11 @@
 		<java.version>21</java.version>
 	</properties>
 
+
     <distributionManagement>
         <repository>
-            <id>codeartifact</id>
+            <id>CODEARTIFACT_REPOSITORY_ID</id>
+            <name>CODEARTIFACT_REPOSITORY_NAME</name>
             <url>CODEARTIFACT_REPOSITORY_URL</url>
         </repository>
     </distributionManagement>
