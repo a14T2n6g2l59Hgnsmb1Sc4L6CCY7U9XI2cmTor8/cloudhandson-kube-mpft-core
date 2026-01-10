@@ -37,13 +37,13 @@ jobs:
 
       - name: Get AWS Account ID
         run: |
-          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) && echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV && echo "$AWS_ACCOUNT_ID"
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) && echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV && echo "ACCOUNT_ID"
 #         aws sts get-caller-identity
 #
-#      - name: Login to Codeartifact
-#        run: |
-#          aws codeartifact login \
-#              --tool mvn \
-#              --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
-#              --domain-owner ${{ env.AWS_ACCOUNT_ID }} \
-#              --repository ${{ secrets.CODEARTIFACT_REPOSITORY }}
+      - name: Login to Codeartifact
+        run: |
+          aws codeartifact login \
+              --tool mvn \
+              --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
+              --domain-owner ${{ env.AWS_ACCOUNT_ID }} \
+              --repository ${{ secrets.CODEARTIFACT_REPOSITORY }}
