@@ -48,4 +48,11 @@ jobs:
       - name: Build with Maven and Publish
         run: |
           ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
-          mvn clean deploy
+
+      - name: Upload Maven settings.xml as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: maven-settings
+          path: ~/.m2/settings.xml
+
+#          mvn clean deploy
