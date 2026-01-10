@@ -40,7 +40,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
-          server-id: codeartifact
+          server-id: "${{ secrets.CODEARTIFACT_DOMAIN }}-${{ secrets.CODEARTIFACT_REPOSITORY }}"
           server-username: aws
           server-password: ${{ steps.codeartifact.outputs.AUTH_TOKEN }}
 
