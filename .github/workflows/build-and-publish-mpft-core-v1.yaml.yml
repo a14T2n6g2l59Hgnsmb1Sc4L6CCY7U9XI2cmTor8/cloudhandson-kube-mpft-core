@@ -24,7 +24,7 @@ jobs:
           ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
 
       - name: Configure AWS Credentials
-        run: aws-actions/configure-aws-credentials@v5.1.1
+        uses: aws-actions/configure-aws-credentials@v5.1.1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: ${{ vars.AWS_REGION }}
