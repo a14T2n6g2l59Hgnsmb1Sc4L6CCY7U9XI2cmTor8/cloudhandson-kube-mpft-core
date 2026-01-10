@@ -33,11 +33,19 @@
 	</properties>
 
 
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>CODEARTIFACT_REPOSITORY_ID</id>-->
+<!--            <name>CODEARTIFACT_REPOSITORY_NAME</name>-->
+<!--            <url>CODEARTIFACT_REPOSITORY_URL</url>-->
+<!--        </repository>-->
+<!--    </distributionManagement>-->
+
     <distributionManagement>
         <repository>
-            <id>CODEARTIFACT_REPOSITORY_ID</id>
-            <name>CODEARTIFACT_REPOSITORY_NAME</name>
-            <url>CODEARTIFACT_REPOSITORY_URL</url>
+            <id>cloudhandson-dev-mpft</id>
+            <name>cloudhandson-dev-mpft</name>
+            <url>https://cloudhandson-dev-263529367083.d.codeartifact.ap-south-1.amazonaws.com/maven/mpft/</url>
         </repository>
     </distributionManagement>
 </project>

@@ -40,7 +40,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
-          server-id: "${{ secrets.CODEARTIFACT_DOMAIN }}-${{ secrets.CODEARTIFACT_REPOSITORY }}"
+          server-id: "cloudhandson-dev-mpft"
           server-username: aws
           server-password: ${{ steps.codeartifact.outputs.AUTH_TOKEN }}
 
@@ -48,9 +48,9 @@ jobs:
         run: |
           CODEARTIFACT_REPOSITORY_URL="https://${{ secrets.CODEARTIFACT_DOMAIN }}-$AWS_ACCOUNT_ID.d.codeartifact.${{ vars.AWS_REGION }}.amazonaws.com/maven/${{ secrets.CODEARTIFACT_REPOSITORY }}/"
           CODEARTIFACT_REPOSITORY_ID="${{ secrets.CODEARTIFACT_DOMAIN }}-${{ secrets.CODEARTIFACT_REPOSITORY }}"
-          sed -i "s|CODEARTIFACT_REPOSITORY_URL|$CODEARTIFACT_REPOSITORY_URL|g" ./pom.xml
-          sed -i "s|CODEARTIFACT_REPOSITORY_ID|$CODEARTIFACT_REPOSITORY_ID|g" ./pom.xml
-          sed -i "s|CODEARTIFACT_REPOSITORY_NAME|$CODEARTIFACT_REPOSITORY_ID|g" ./pom.xml
+#          sed -i "s|CODEARTIFACT_REPOSITORY_URL|$CODEARTIFACT_REPOSITORY_URL|g" ./pom.xml
+#          sed -i "s|CODEARTIFACT_REPOSITORY_ID|$CODEARTIFACT_REPOSITORY_ID|g" ./pom.xml
+#          sed -i "s|CODEARTIFACT_REPOSITORY_NAME|$CODEARTIFACT_REPOSITORY_ID|g" ./pom.xml
           mvn clean deploy
 #          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
 
