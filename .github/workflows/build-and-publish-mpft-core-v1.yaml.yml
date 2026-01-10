@@ -43,6 +43,7 @@ jobs:
           server-username: aws
           server-password: ${{ steps.codeartifact.outputs.AUTH_TOKEN }}
 
-      - name: Build with Maven
-        run: |
-          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
+      - name: Build with Maven and Publish
+        run: mvn clean deploy
+#          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
+
