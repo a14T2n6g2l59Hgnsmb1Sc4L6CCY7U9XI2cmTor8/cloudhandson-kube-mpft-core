@@ -58,7 +58,7 @@ jobs:
       - name: Build with Maven and Publish
         run: |
           CODEARTIFACT_REPOSITORY_URL="https://${{ secrets.CODEARTIFACT_DOMAIN }}-${{ vars.AWS_REGION }}.d.codeartifact.${{ vars.AWS_REGION }}.amazonaws.com/maven/${{ secrets.CODEARTIFACT_REPOSITORY }}/"
-          sed -i "s|CODEARTIFACT_REPOSITORY_URL|$CODEARTIFACT_REPOSITORY_URL|g"
+          sed -i "s|CODEARTIFACT_REPOSITORY_URL|$CODEARTIFACT_REPOSITORY_URL|g" ./pom.xml
           
           sed -i "s|CODEARTIFACTORY_REPOSITORY_ID|${{ env.CODEARTIFACTORY_REPOSITORY_ID }}|g" ./pom.xml
           sed -i "s|CODEARTIFACTORY_REPOSITORY_NAME|${{ env.CODEARTIFACTORY_REPOSITORY_ID }}|g" ./pom.xml
