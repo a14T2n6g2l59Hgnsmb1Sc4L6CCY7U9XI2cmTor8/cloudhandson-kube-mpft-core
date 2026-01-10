@@ -33,13 +33,13 @@
 	</properties>
 
 
-<!--    <distributionManagement>-->
-<!--        <repository>-->
-<!--            <id>CODEARTIFACT_REPOSITORY_ID</id>-->
-<!--            <name>CODEARTIFACT_REPOSITORY_NAME</name>-->
-<!--            <url>CODEARTIFACT_REPOSITORY_URL</url>-->
-<!--        </repository>-->
-<!--    </distributionManagement>-->
+    <distributionManagement>
+        <repository>
+            <id>CODEARTIFACT_REPOSITORY_ID</id>
+            <name>CODEARTIFACT_REPOSITORY_NAME</name>
+            <url>CODEARTIFACT_REPOSITORY_URL</url>
+        </repository>
+    </distributionManagement>
 
     <distributionManagement>
         <repository>
