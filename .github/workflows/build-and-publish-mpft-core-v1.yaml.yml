@@ -30,7 +30,7 @@ jobs:
           AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 #          echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV && echo $AWS_ACCOUNT_ID
           CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
-          --domain-owner $AWS_ACCOUNT_ID --query authorizationToken --output text)
+          --domain-owner ${AWS_ACCOUNT_ID} --query authorizationToken --output text)
 
       - name: Set up JDK 21
         uses: actions/setup-java@v4
