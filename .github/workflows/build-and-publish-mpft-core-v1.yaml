@@ -42,7 +42,7 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
           server-id: 'cloudhandson-dev-mpft'
-          server-username: 'aws'
+          server-username: aws
           server-password: ${{ env.AUTH_TOKEN }}
 
       - name: Build with Maven and Publish
