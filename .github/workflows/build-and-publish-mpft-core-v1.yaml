@@ -29,6 +29,7 @@ jobs:
         shell: bash
         run: |
           AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) 
+          echo "AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID" >> $GITHUB_ENV
           AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
           --domain-owner ${AWS_ACCOUNT_ID} --query authorizationToken --output text)
           echo "AUTH_TOKEN=$AUTH_TOKEN" >> $GITHUB_OUTPUT
@@ -44,6 +45,9 @@ jobs:
           server-password: ${{ steps.codeartifact.outputs.AUTH_TOKEN }}
 
       - name: Build with Maven and Publish
-        run: mvn clean deploy
+        run: |
+          CODEARTIFACT_REPOSITORY_URL="https://${{ secrets.CODEARTIFACT_DOMAIN }}-$AWS_ACCOUNT_ID.d.codeartifact.${{ vars.AWS_REGION }}.amazonaws.com/maven/${{ secrets.CODEARTIFACT_DOMAIN }}/"
+          sed -i -e "s/CODEARTIFACT_REPOSITORY_URL/$CODEARTIFACT_REPOSITORY_URL/g" ./pom.xml
+          mvn clean deploy
 #          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
 
