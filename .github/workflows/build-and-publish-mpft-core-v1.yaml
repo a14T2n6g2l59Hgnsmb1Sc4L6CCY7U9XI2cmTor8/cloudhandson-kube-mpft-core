@@ -49,11 +49,11 @@ jobs:
           server-username: CODEARTIFACTORY_USERNAME
           server-password: CODEARTIFACTORY_AUTH_TOKEN
 
-      - name: Upload Maven settings.xml as artifact
-        uses: actions/upload-artifact@v6.0.0
-        with:
-          name: maven-settings
-          path: ~/.m2/settings.xml
+#      - name: Upload Maven settings.xml as artifact
+#        uses: actions/upload-artifact@v6.0.0
+#        with:
+#          name: maven-settings
+#          path: ~/.m2/settings.xml
 
       - name: Build with Maven and Publish
         run: |
@@ -66,4 +66,5 @@ jobs:
           mvn clean deploy
 
 #          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
+#          mvn clean deploy#          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
 #          mvn clean deploy
