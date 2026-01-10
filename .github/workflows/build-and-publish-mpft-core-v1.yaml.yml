@@ -37,10 +37,8 @@ jobs:
 
       - name: Get AWS Account ID
         run: |
-          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-          echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV
-#              aws sts get-caller-identity
-          echo "$AWS_ACCOUNT_ID"
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) && echo "AWS_ACCOUNT_ID=$ACCOUNT_ID" >> $GITHUB_ENV && echo "$AWS_ACCOUNT_ID"
+#         aws sts get-caller-identity
 #
 #      - name: Login to Codeartifact
 #        run: |
