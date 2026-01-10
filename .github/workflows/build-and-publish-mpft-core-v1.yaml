@@ -47,18 +47,19 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
-          server-id: CODEARTIFACTORY_ID
+          server-id: cloudhandson-dev-mpft
           server-username: CODEARTIFACTORY_USERNAME
           server-password: CODEARTIFACTORY_AUTH_TOKEN
-
-      - name: Build with Maven and Publish
-        run: |
-          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
 
       - name: Upload Maven settings.xml as artifact
         uses: actions/upload-artifact@v6.0.0
         with:
           name: maven-settings
           path: ~/.m2/settings.xml
+
+      - name: Build with Maven and Publish
+        run: |
+          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
+          mvn clean deploy
 
 #          mvn clean deploy
