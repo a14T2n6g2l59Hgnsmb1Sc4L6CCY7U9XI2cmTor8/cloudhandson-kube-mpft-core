@@ -28,7 +28,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v5.1.1
         with:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
-          aws-regiAWS_REGIONon: ${{ vars.AWS_REGION }}
+          aws-region: ${{ vars.AWS_REGION }}
 
       - name: Sts Get Caller Identity
         run: |
