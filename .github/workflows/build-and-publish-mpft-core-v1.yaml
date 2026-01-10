@@ -48,4 +48,3 @@ jobs:
         run: |
           mvn clean deploy
 #          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
-
