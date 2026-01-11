@@ -1,9 +1,9 @@
 name: build-and-publish-mpft-core-v1.yaml
 on:
   push:
-    branches: [ "feature/github_action_test" ]
+    branches: [ "xfeature/github_action_test" ]
   pull_request:
-    branches: [ "feature/github_action_test" ]
+    branches: [ "xfeature/github_action_test" ]
 
 # Permission can be added at job level or workflow level
 permissions:
@@ -31,12 +31,17 @@ jobs:
           AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) 
           echo "AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID" >> $GITHUB_ENV
 
-          AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
+          CODEARTIFACT_REPOSITORY_URL=$(aws codeartifact get-repository-endpoint --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
+          --repository ${{ secrets.CODEARTIFACT_REPOSITORY }} --format maven)
+          
+          echo "CODEARTIFACTORY_USERNAME=aws" >> $GITHUB_ENV
+
+          CODEARTIFACTORY_AUTH_TOKEN=$(aws codeartifact get-authorization-token --domain ${{ secrets.CODEARTIFACT_DOMAIN }} \
           --domain-owner ${AWS_ACCOUNT_ID} --query authorizationToken --output text)
 
           echo "CODEARTIFACTORY_REPOSITORY_ID=${{ secrets.CODEARTIFACT_DOMAIN }}-${{ secrets.CODEARTIFACT_REPOSITORY }}" >> $GITHUB_ENV
           echo "CODEARTIFACTORY_USERNAME=aws" >> $GITHUB_ENV
-          echo "CODEARTIFACTORY_AUTH_TOKEN=$AUTH_TOKEN" >> $GITHUB_ENV
+          echo "CODEARTIFACTORY_AUTH_TOKEN=$CODEARTIFACTORY_AUTH_TOKEN" >> $GITHUB_ENV
 #          echo "CODEARTIFACTORY_AUTH_TOKEN=$AUTH_TOKEN" >> $GITHUB_OUTPUT
 
       - name: Set up JDK 21
@@ -57,9 +62,7 @@ jobs:
 
       - name: Build with Maven and Publish
         run: |
-          CODEARTIFACT_REPOSITORY_URL="https://${{ secrets.CODEARTIFACT_DOMAIN }}-${{ env.AWS_ACCOUNT_ID }}.d.codeartifact.${{ vars.AWS_REGION }}.amazonaws.com/maven/${{ secrets.CODEARTIFACT_REPOSITORY }}/"
-          sed -i "s|CODEARTIFACT_REPOSITORY_URL|$CODEARTIFACT_REPOSITORY_URL|g" ./pom.xml
-          
+          sed -i "s|CODEARTIFACT_REPOSITORY_URL|${{ CODEARTIFACT_REPOSITORY_URL }}|g" ./pom.xml          
           sed -i "s|CODEARTIFACTORY_REPOSITORY_ID|${{ env.CODEARTIFACTORY_REPOSITORY_ID }}|g" ./pom.xml
           sed -i "s|CODEARTIFACTORY_REPOSITORY_NAME|${{ env.CODEARTIFACTORY_REPOSITORY_ID }}|g" ./pom.xml
           
