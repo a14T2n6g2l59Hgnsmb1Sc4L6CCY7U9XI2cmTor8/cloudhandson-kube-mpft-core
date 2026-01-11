@@ -1,4 +1,4 @@
-name: build-and-publish-mpft-core-v1.yaml
+name: build-and-publish-mpft-core-v2
 on:
   push:
     branches: [ "feature/github_action_test" ]
