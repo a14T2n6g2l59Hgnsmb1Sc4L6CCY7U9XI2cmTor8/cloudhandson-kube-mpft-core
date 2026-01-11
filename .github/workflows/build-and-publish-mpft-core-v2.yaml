@@ -47,7 +47,7 @@ jobs:
       - name: Build with Maven and Publish
         run: |
           sed -i "s|CODEARTIFACT_REPOSITORY_URL|${{ env.CODEARTIFACT_REPOSITORY_URL }}|g" ./pom.xml          
-          sed -i "s|CODEARTIFACTORY_REPOSITORY_ID|${{ env.CODEARTIFACTORY_REPOSITORY_ID }}|g" ./pom.xml
-          sed -i "s|CODEARTIFACTORY_REPOSITORY_NAME|${{ env.CODEARTIFACTORY_REPOSITORY_ID }}|g" ./pom.xml
+          sed -i "s|CODEARTIFACTORY_REPOSITORY_ID|${{ env.CODEARTIFACT_REPOSITORY_ID }}|g" ./pom.xml
+          sed -i "s|CODEARTIFACTORY_REPOSITORY_NAME|${{ env.CODEARTIFACT_REPOSITORY_ID }}|g" ./pom.xml
           cat ./pom.xml
           mvn clean deploy
