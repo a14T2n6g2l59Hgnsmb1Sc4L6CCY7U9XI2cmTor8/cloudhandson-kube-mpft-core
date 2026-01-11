@@ -33,8 +33,8 @@
 	</properties>
     <distributionManagement>
         <repository>
-            <id>CODEARTIFACTORY_REPOSITORY_ID</id>
-            <name>CODEARTIFACTORY_REPOSITORY_NAME</name>
+            <id>CODEARTIFACT_REPOSITORY_ID</id>
+            <name>CODEARTIFACT_REPOSITORY_NAME</name>
             <url>CODEARTIFACT_REPOSITORY_URL</url>
         </repository>
     </distributionManagement>

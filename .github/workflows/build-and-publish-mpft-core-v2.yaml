@@ -37,8 +37,8 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
           server-id: ${{ env.CODEARTIFACT_REPOSITORY_ID }}
-          server-username: CODEARTIFACTORY_USERNAME
-          server-password: CODEARTIFACTORY_AUTH_TOKEN
+          server-username: CODEARTIFACT_USERNAME
+          server-password: CODEARTIFACT_AUTH_TOKEN
 
       - name: Debug
         run: |
@@ -47,7 +47,7 @@ jobs:
       - name: Build with Maven and Publish
         run: |
           sed -i "s|CODEARTIFACT_REPOSITORY_URL|${{ env.CODEARTIFACT_REPOSITORY_URL }}|g" ./pom.xml          
-          sed -i "s|CODEARTIFACTORY_REPOSITORY_ID|${{ env.CODEARTIFACT_REPOSITORY_ID }}|g" ./pom.xml
-          sed -i "s|CODEARTIFACTORY_REPOSITORY_NAME|${{ env.CODEARTIFACT_REPOSITORY_ID }}|g" ./pom.xml
+          sed -i "s|CODEARTIFACT_REPOSITORY_ID|${{ env.CODEARTIFACT_REPOSITORY_ID }}|g" ./pom.xml
+          sed -i "s|CODEARTIFACT_REPOSITORY_NAME|${{ env.CODEARTIFACT_REPOSITORY_ID }}|g" ./pom.xml
           cat ./pom.xml
           mvn clean deploy
