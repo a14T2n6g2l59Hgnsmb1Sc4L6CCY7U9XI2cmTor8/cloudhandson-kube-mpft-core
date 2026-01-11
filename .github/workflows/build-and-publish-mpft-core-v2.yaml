@@ -29,3 +29,17 @@ jobs:
         with:
           CODEARTIFACT_DOMAIN: ${{ secrets.CODEARTIFACT_DOMAIN }}
           CODEARTIFACT_REPOSITORY: ${{ secrets.CODEARTIFACT_REPOSITORY }}
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+          server-id: ${{ env.CODEARTIFACTORY_REPOSITORY_ID }}
+          server-username: CODEARTIFACTORY_USERNAME
+          server-password: CODEARTIFACTORY_AUTH_TOKEN
+
+      - name: Debug
+        run: |
+          ls -lrth ~/.m2/ && cat ~/.m2/settings.xml
