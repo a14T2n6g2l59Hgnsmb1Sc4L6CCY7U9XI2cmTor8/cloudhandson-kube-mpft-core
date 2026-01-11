@@ -36,7 +36,7 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: 'maven'
-          server-id: ${{ env.CODEARTIFACTORY_REPOSITORY_ID }}
+          server-id: ${{ env.CODEARTIFACT_REPOSITORY_ID }}
           server-username: CODEARTIFACTORY_USERNAME
           server-password: CODEARTIFACTORY_AUTH_TOKEN
 
