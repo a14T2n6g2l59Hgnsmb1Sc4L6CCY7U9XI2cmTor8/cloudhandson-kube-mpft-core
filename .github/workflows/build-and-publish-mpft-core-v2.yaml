@@ -25,4 +25,7 @@ jobs:
           aws-region: ${{ vars.AWS_REGION }}
 
       - name: Login to Codeartifact
-        uses: a14T2n6g2l59Hgnsmb1Sc4L6CCY7U9XI2cmTor8/cloudhandson-kube-reusable-workflow/.github/actions/login-aws-codeartifact@master
+        uses: a14T2n6g2l59Hgnsmb1Sc4L6CCY7U9XI2cmTor8/cloudhandson-kube-reusable-workflow/.github/actions/login-aws-codeartifact@test-reusable-workflow
+        with:
+          CODEARTIFACT_DOMAIN: ${{ secrets.CODEARTIFACT_DOMAIN }}
+          CODEARTIFACT_REPOSITORY: ${{ secrets.CODEARTIFACT_REPOSITORY }}
